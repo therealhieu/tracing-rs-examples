@@ -1,0 +1,18 @@
+[package]
+name = "tracing-rs-examples"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tracing = "0.1.37"
+tracing-opentelemetry = "0.18.0"
+tracing-subscriber = { version =  "0.3.0" , features = ["registry", "std", "env-filter"] }
+opentelemetry = { version = "0.18.0", features = ["rt-tokio"] }
+opentelemetry-jaeger = { version = "0.17.0", features = ["rt-tokio", "collector_client", "isahc_collector_client", "reqwest_collector_client"] }
+tokio = { version = "1.26.0", features = ["full"] }
+futures = "0.3.27"
+opentelemetry-otlp = "0.11.0"
+rayon = "1.7.0"
+tracing-forest = { version = "0.1.5", features =  ["chrono", "tokio", "ansi"] }

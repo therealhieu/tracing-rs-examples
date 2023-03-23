@@ -1,0 +1,20 @@
+{
+    "es": {
+      "bulk_max_size": 1
+    },
+    "span_storage": {
+      "type": "memory"
+    },
+    "ingester": {
+      "ingestion_buffer": {
+        "buffer_flush_interval": "1ms",
+        "buffer_max_size": 1
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  
