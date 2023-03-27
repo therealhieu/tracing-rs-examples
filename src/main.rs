@@ -48,11 +48,12 @@ fn otel_stdout_tracer() -> Tracer {
 fn init_oltp_tracing() {
     let otel_otlp_tracer = otel_otlp_tracer();
     let otel = tracing_opentelemetry::layer().with_tracer(otel_otlp_tracer);
-    let stdout = tracing_subscriber::fmt::layer().pretty();
+    // let stdout = tracing_subscriber::fmt::layer().pretty();
 
     tracing_subscriber::Registry::default()
+        .with(ForestLayer::default())
         .with(otel)
-        .with(stdout)
+        // .with(stdout)
         .with(EnvFilter::from_default_env())
         .init();
 }
@@ -73,8 +74,8 @@ fn init_jaeger_tracing() {
 
 #[tokio::main]
 async fn main() {
-    // init_oltp_tracing();
-    init_jaeger_tracing();
+    init_oltp_tracing();
+    // init_jaeger_tracing();
 
     let _root_span = info_span!("root").entered();
     info!("Starting the application...");
